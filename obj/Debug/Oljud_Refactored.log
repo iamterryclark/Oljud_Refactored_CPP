@@ -1,0 +1,8 @@
+﻿  Gestures.cpp
+  JointClass.cpp
+  ParticleSystem.cpp
+  main.cpp
+  ofApp.cpp
+src\ofApp.cpp(6): error C2664: 'ParticleSystem::ParticleSystem(ParticleSystem &&)': cannot convert argument 1 from 'ofVec3f' to 'const ParticleSystem &'
+  src\ofApp.cpp(6): note: Reason: cannot convert from 'ofVec3f' to 'const ParticleSystem'
+  src\ofApp.cpp(6): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called

@@ -3,8 +3,7 @@
 
 ofApp::ofApp() {
 	for (auto & system : systems) {
-		system = new ParticleSystem(ofVec3f(0, 0, 0));
-
+		system = new ParticleSystem();
 	}
 }
 
@@ -23,7 +22,7 @@ void ofApp::setup() {
 	// initial camera values
 	camera.setDistance(1);
 	
-	jointClass->setup();
+	jointClass.setup();
 
 	for (auto & system : systems) {
 		system->setup();
@@ -33,14 +32,13 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 	// update the kinect streams and joint information
-	jointClass->update();
+	jointClass.update();
 
 	//update all particle system origins
 	for (auto & system : systems) {
 		system->update();
 	}
-
-	systems[0]->addParticles(jointClass->middle);
+	systems[0]->addParticles(jointClass.leftHand);
 	
 }
 
@@ -50,13 +48,17 @@ void ofApp::draw() {
 
 	camera.begin();
 	ofPushStyle();
-	ofScale(10, 10, -10);
-	jointClass->drawJoints3D();
+	ofScale(10, 10, -100);
+	
+	jointClass.drawJoints3D();
+
+	ofPopStyle();
+	camera.end();
+
 	for (auto & system : systems) {
 		system->display();
 	}
-	ofPopStyle();
-	camera.end();
+	
 	
 	//gestures.run();
 	//oscMsg.run();

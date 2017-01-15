@@ -30,6 +30,11 @@ void JointClass::getJointPosition(Body b) {
 	rightHand = b.joints[JointType_HandRight].getPosition();
 	rightElbow = b.joints[JointType_ElbowLeft].getPosition();
 	rightShoulder = b.joints[JointType_ShoulderLeft].getPosition();
+
+	mappedleftHand = ofVec3f(
+		ofMap(),
+		ofMap(),
+		leftHand.z);
 }
 
 void JointClass::drawJoints3D() {

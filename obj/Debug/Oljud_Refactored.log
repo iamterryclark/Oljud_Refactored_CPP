@@ -1,8 +1,10 @@
 ﻿  Gestures.cpp
   JointClass.cpp
-  ParticleSystem.cpp
   main.cpp
   ofApp.cpp
-src\ofApp.cpp(6): error C2664: 'ParticleSystem::ParticleSystem(ParticleSystem &&)': cannot convert argument 1 from 'ofVec3f' to 'const ParticleSystem &'
-  src\ofApp.cpp(6): note: Reason: cannot convert from 'ofVec3f' to 'const ParticleSystem'
-  src\ofApp.cpp(6): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+  Oljud_Refactored.vcxproj -> C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\Oljud_Refactored_debug.exe
+  Oljud_Refactored.vcxproj -> bin\Oljud_Refactored_debug.pdb (Full PDB)
+  
+  	                   9	C:\Users\T\Desktop\openFrameworks\export\vs\Win32\
+  	  *EXTRA File 		 1503232	C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\fmodex64.dll
+  	  *EXTRA File 		 1552384	C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\fmodexL64.dll

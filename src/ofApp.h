@@ -30,7 +30,7 @@ public:
 	void gotMessage(ofMessage msg);
 	
 	//My Classes
-	JointClass *jointClass; //Skeleton Data
+	JointClass jointClass; //Skeleton Data
 	ParticleSystem *systems[7];
 	//Gestures gestures; //Gestures are created here
 

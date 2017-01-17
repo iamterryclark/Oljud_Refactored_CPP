@@ -6,26 +6,27 @@
 
 #define bodies 6
 
-typedef ofxKFW2::Data::Body Body;
 
 class JointClass
 {
 public:
+	JointClass();
+	~JointClass();
 	void setup();
 	void update();
-	void getJointPosition(Body b);
-	void drawJoints3D();
+	void getJointPosition();
 
-	ofVec3f middle;
-	ofVec3f leftHand, leftElbow, leftShoulder;
-	ofVec3f rightHand, rightElbow, rightShoulder;
+	ofVec3f middle, mappedMiddle;
+	ofVec3f leftHand, mappedLeftHand;
+	ofVec3f leftElbow, mappedLeftElbow;
+	ofVec3f leftShoulder, mappedLeftShoulder;
+	ofVec3f rightHand, mappedRightHand;
+	ofVec3f rightElbow, mappedRightElbow;
+	ofVec3f rightShoulder, mappedRightShoulder;
 
 	ofxKFW2::Device kinect;
 	ICoordinateMapper* m_pCoordinateMapper;
-	DepthSpacePoint m_pDepthCoordinates[1920 * 1080];
-
-	//string lHandState;
-	//string rHandState;
+	DepthSpacePoint m_pDepthCoordinates[1280 * 720];
 
 };
 

@@ -1,11 +1,10 @@
 #pragma once
 
-//Reference:
-
 #include "ofMain.h"
 #include "ofxOscSender.h"
 #include "JointClass.h"
 #include "ParticleSystem.h"
+#include "Gestures.h"
 
 #define HOST "localhost"
 #define PORT 9000
@@ -30,9 +29,9 @@ public:
 	void gotMessage(ofMessage msg);
 	
 	//My Classes
-	JointClass jointClass; //Skeleton Data
-	ParticleSystem *systems[7];
-	//Gestures gestures; //Gestures are created here
+    JointClass jointClass; //Skeleton Data
+	ParticleSystem *systems[2];
+	Gestures gestures; //Gestures are created here
 
 	//External Library Classes
 	ofEasyCam camera;

@@ -1,0 +1,12 @@
+﻿  JointClass.cpp
+     Creating library bin\Oljud_Refactored.lib and object bin\Oljud_Refactored.exp
+  Generating code
+  0 of 1208 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Oljud_Refactored.vcxproj -> C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\Oljud_Refactored.exe
+  
+  	                   9	C:\Users\T\Desktop\openFrameworks\export\vs\Win32\
+  	  *EXTRA File 		 1503232	C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\fmodex64.dll
+  	  *EXTRA File 		 1552384	C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\fmodexL64.dll

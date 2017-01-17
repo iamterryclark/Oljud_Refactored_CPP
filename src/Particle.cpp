@@ -8,8 +8,8 @@ Particle::Particle(ofVec3f _loc, int _rad, ofVec3f _vel, ofVec3f _acc, float _li
 	//This picks a random point in time of the noise wave
 	noiseTime = ofRandom(1000);
 
-	//I need to then calculate each particle's 90 degree vector equivilant in order to change the movement from left to right
-	// creating a wiggle effect
+	//I need to then calculate each particle's 90 degree vector equivilent in order to change the movement from left to right
+	//creating a wiggle effect
 	noiseVector = vel.rotate(0, 0, 90);
 	center = ofVec3f(0, 0, 0);
 
@@ -61,18 +61,16 @@ void Particle::update() {
 	//Set the color of each particle and as the sketch is translated to the center and thus 0,0 of itself i needed to
 	//get the location from above a certain amount and below a certain amount.
 
-	if (dist > 30) {
-		green -= ofGetMouseX() / 100;
-		blue -= ofGetMouseY() / 100;
+	if (dist > 10) {
+		green -= 12;
+		blue -= 20;
 	}
 
 	//Life is then slowly decreased and killed later in the program
-	life -= 0.6;
+	life -= 1.9;
 }
 
 void Particle::display() {
-
-
 
 	ofSetColor(red, green, blue, life);
 	ofFill();

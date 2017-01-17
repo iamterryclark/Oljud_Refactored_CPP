@@ -1,34 +1,23 @@
 #include "Gestures.h"
 
-Gestures::Gestures(JointClass* _jointclass):jointClass(_jointclass)
-{
-	//textalign center
-	//ofFill(255);
-	//ofSetLineWidth(0);
-	text.loadFont("arial.ttf", 32);
+void Gestures::setup() {
 	loadingCol = ofColor(60, 100, 250);
 	gestureMaxTime = 0;
-
 }
 
-
-Gestures::~Gestures()
-{
-}
-
-void Gestures::run() {
+void Gestures::run(JointClass* jointClass) {
 	/*This all runs in is a loop as we need to check where the individual parts
 	  of the body are every frame in order to track.*/
 
 	//Get vectors from the joint class which takes kinect input.
 	//jointClass is a pointer therefore '->' notation is necessary to access the objects variables
-	lHand = jointClass->leftHand;
-	lElbow = jointClass->leftElbow;
-	lShoulder = jointClass->leftShoulder;
+	/*lHand = jointClass.leftHand;
+	lElbow = jointClass.leftElbow;
+	lShoulder = jointClass.leftShoulder;
 
-	rHand = jointClass->rightHand;
-	rElbow = jointClass->rightElbow;
-	rShoulder = jointClass->rightShoulder;
+	rHand = jointClass.rightHand;
+	rElbow = jointClass.rightElbow;
+	rShoulder = jointClass.rightShoulder;
 
 	//Return a boolean to see if the vectors are close enough to activate a guesture
 	gesture1On = gestureCheck(lHand, rShoulder);
@@ -37,7 +26,7 @@ void Gestures::run() {
 	gesture4On = gestureCheck(rHand, lElbow);
 	gesture5On = gestureCheck(lHand, rHand);
 
-	if (gesture1On) {
+	/*if (gesture1On) {
 		//If left hand and right should are close
 		++gesture1Count; //Use a ticker to count the seconds
 
@@ -51,7 +40,7 @@ void Gestures::run() {
 		loadingGestureIcon(gesture1Count);
 		ofSetColor(loadingCol); //Use a color to show the text over the top
 		ofFill(); // Fill it, I realise I might not need this for text
-		text.drawString("PLAY", ofGetWidth()/2, ofGetHeight()/2); //Display it, bang on the center!
+		//text.drawString("PLAY", ofGetWidth()/2, ofGetHeight()/2); //Display it, bang on the center!
 
 		//If the ticker equals the maximum guesture time I want..
 		if (gesture1Count == gestureMaxTime) {
@@ -85,9 +74,9 @@ void Gestures::run() {
 		ofSetColor(loadingCol);
 		ofFill();
 		//textSize(50);
-		text.drawString("»", ofGetWidth()/2 - 10, ofGetHeight()/2);
+		//text.drawString(">>", ofGetWidth()/2 - 10, ofGetHeight()/2);
 		//textSize(30);
-		text.drawString("|", ofGetWidth()/2 + 10, ofGetHeight()/2 - 2);
+		//text.drawString("|", ofGetWidth()/2 + 10, ofGetHeight()/2 - 2);
 		if (gesture3Count == gestureMaxTime) {
 			//oscMsg.drumReset = true;
 			//oscMsg.nextScene(); // Go forward to the next part of the song i.e chorus
@@ -108,9 +97,9 @@ void Gestures::run() {
 		ofSetColor(loadingCol);
 		ofFill();
 		//textSize(50);
-		text.drawString("«", ofGetWidth()/2 - 10, ofGetHeight()/2);
+		//text.drawString("<<", ofGetWidth()/2 - 10, ofGetHeight()/2);
 		//textSize(30);
-		text.drawString("|", ofGetWidth()/2 + 10, ofGetHeight()/2 - 2);
+		//text.drawString("|", ofGetWidth()/2 + 10, ofGetHeight()/2 - 2);
 		if (gesture4Count == gestureMaxTime) {
 			//oscMsg.drumReset = true;
 			//oscMsg.prevScene(); // Go back to the previous part of the song i.e verse
@@ -132,7 +121,7 @@ void Gestures::run() {
 		ofFill();
 		//textSize(30);
 		//Drum Glitch time!
-		text.drawString("Beat Repeat", ofGetWidth()/2, ofGetHeight()/2);
+		//text.drawString("Beat Repeat", ofGetWidth()/2, ofGetHeight()/2);
 		if (gesture5Count == gestureMaxTime) {
 			/*if (oscMsg.isBeatRepeatOn) {
 				oscMsg.beatReapeatChance(0);// Send once turn on beat Repeater and switch ableton device 'chance' to 0
@@ -143,9 +132,10 @@ void Gestures::run() {
 			oscMsg.drumReset = true;
 			oscMsg.isBeatRepeatOn = !oscMsg.isBeatRepeatOn;//Main switch boolean to turn beat repeat on and off
 			*/
-			gesture5Count = 0; //Count reset
-		}
-	}
+/*
+			gesture5Count = 0; //Count reset*/
+		//}
+	//}
 
 	//oscMsg.run();
 	
@@ -165,7 +155,7 @@ bool Gestures::gestureCheck(ofVec2f v1, ofVec2f v2) {
 	ofVec2f diffVec = v1 - v2;
 	float magnitude = sqrt(pow(diffVec.x, 2) + pow(diffVec.y,2)); //Had to write this out long hand instead of useing processing's '.mag' vector function
 
-	if (magnitude < 130) { //When the guesture has been held for a duration of time
+	if (magnitude < 0.13) { //When the guesture has been held for a duration of time
 		return true; //Guesture is activated
 	} else {
 		return false;//Guesture is not activated

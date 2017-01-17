@@ -1,10 +1,3 @@
-﻿  Gestures.cpp
-  JointClass.cpp
-  main.cpp
-  ofApp.cpp
-  Oljud_Refactored.vcxproj -> C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\Oljud_Refactored_debug.exe
-  Oljud_Refactored.vcxproj -> bin\Oljud_Refactored_debug.pdb (Full PDB)
-  
-  	                   9	C:\Users\T\Desktop\openFrameworks\export\vs\Win32\
-  	  *EXTRA File 		 1503232	C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\fmodex64.dll
-  	  *EXTRA File 		 1552384	C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\fmodexL64.dll
+﻿ofxKinectForWindows2Lib.lib(Joint.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+     Creating library bin\Oljud_Refactored_debug.lib and object bin\Oljud_Refactored_debug.exp
+LINK : fatal error LNK1201: error writing to program database 'C:\Users\T\Desktop\openFrameworks\apps\myApps\Oljud_Refactored\bin\Oljud_Refactored_debug.pdb'; check for insufficient disk space, invalid path, or insufficient privilege

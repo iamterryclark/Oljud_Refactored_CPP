@@ -5,9 +5,7 @@
 class Particle
 {
 public:
-	Particle(ofVec3f location, int rad, ofVec3f vel, ofVec3f acc, float life);
-
-	void setup();
+	Particle(ofVec3f _location, int _rad, ofVec3f _vel, ofVec3f _acc, float _life);
 	void update();
 	void display();
 	bool kill();

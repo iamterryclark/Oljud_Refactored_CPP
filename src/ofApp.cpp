@@ -16,7 +16,7 @@
 	
 */
 
-ofApp::ofApp() {
+ofApp::ofApp() : oscMsg(&jc), gestures(&jc, &oscMsg) {
 
 	//Initialise the particle systems to the heap in order to save on memory and keep the program quick
 	for (auto & system : systems) {
@@ -25,27 +25,13 @@ ofApp::ofApp() {
 	}
 }
 
-ofApp::~ofApp() {
-	//When creating something on the heap it must be deleted in order to stop using unused memory
-	//'system' is also a pointer object and therefore we mut also mull pointer this as otherwise there will be a dangling pointer.
-	for (auto & system : systems) { //quickhand for loop used here using system as a referenece to the many systems
-		delete system;
-		system = nullptr;
-	}
-}
-
 //--------------------------------------------------------------
 void ofApp::setup() {
-	//Resets window size 
-	ofSetWindowShape(1280, 720);
-	ofSetFrameRate(60); //Framerate without this is far to quick.
+	ofSetFrameRate(50); //Framerate without this is far to quick.
 	ofBackground(0);
-	
-	// initial camera values
-	camera.setDistance(1);
-	
+
 	//Initial setup of Kinect and body source , to obtain skeleton points
-	jointClass.setup();
+	jc.setup();
 	gestures.setup();
 
 	for (auto & system : systems) {
@@ -56,41 +42,47 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 	//Update the kinect streams and joint information
-	jointClass.update();
+	jc.update();
+	jc.getJointPosition();
 
 	//Update all particle system origins
 	for (auto & system : systems) {
 		system->update();
 	}
 
-	//Add particles to the origin of both hands so that particles eject from here
-	systems[0]->addParticles(jointClass.mappedLeftHand);
-	systems[1]->addParticles(jointClass.mappedRightHand);	
+	if (jc.lHandState == "Open")
+		//Add particles to the origin of both hands so that particles eject from here
+		systems[0]->addParticles(ofVec2f(jc.mappedLeftHand.x, jc.mappedLeftHand.y));
+	if (jc.rHandState == "Open")
+		systems[1]->addParticles(ofVec2f(jc.mappedRightHand.x, jc.mappedRightHand.y));
 
-	gestures.run(&jointClass);
+
+	gestures.run();
+	oscMsg.run();
+	
 }
 
 //--------------------------------------------------------------
 
-void ofApp::draw() {
-
-	camera.begin();
-	ofPushStyle();
-	ofScale(10, 10, -20);
-	
-	jointClass.getJointPosition();
-
-	ofPopStyle();
-	camera.end();
-
+void ofApp::draw() {	
 	for (auto & system : systems) {
 		system->display();
+		
 	}
-	
-	
-	//oscMsg.run();
+
+	systems[0]->particleGui.draw();
+	systems[1]->particleGui.draw();
 }
 
+
+void ofApp::exit() {
+	//When creating something on the heap it must be deleted in order to stop using unused memory
+	//'system' is also a pointer object and therefore we mut also mull pointer this as otherwise there will be a dangling pointer.
+	for (auto & system : systems) { //quickhand for loop used here using system as a referenece to the many systems
+		delete system;
+		system = nullptr;
+	}
+}
 
 
 //--------------------------------------------------------------

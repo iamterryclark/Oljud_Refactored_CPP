@@ -10,8 +10,6 @@
 class JointClass
 {
 public:
-	JointClass();
-	~JointClass();
 	void setup();
 	void update();
 	void getJointPosition();
@@ -28,5 +26,7 @@ public:
 	ICoordinateMapper* m_pCoordinateMapper;
 	DepthSpacePoint m_pDepthCoordinates[1280 * 720];
 
+	string lHandState;
+	string rHandState;
 };
 

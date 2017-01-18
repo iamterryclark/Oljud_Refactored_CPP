@@ -2,17 +2,22 @@
 
 #include <ofMain.h>
 #include "Particle.h"
+#include "ofxGui.h"
 
 class ParticleSystem {
 
 public:
-	ParticleSystem() { particles = new vector<Particle>(); };
-	~ParticleSystem() { delete particles;  };
 	void setup();
-	void addParticles(ofVec3f origin);
+	void addParticles(ofVec2f &_origin);
 	void update();
 	void display();
 	void deleteParticles();
-	vector<Particle> *particles;
+	vector<Particle *> particles;
+
+	ofxPanel particleGui;
+	ofParameter<float> velX, velY;
+	ofParameter<float> accX, accY;
+	ofParameterGroup particleParams;
 };
+
 

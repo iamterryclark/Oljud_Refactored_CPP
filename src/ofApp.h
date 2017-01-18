@@ -2,9 +2,10 @@
 
 #include "ofMain.h"
 #include "ofxOscSender.h"
-#include "JointClass.h"
+#include "jointClass.h"
 #include "ParticleSystem.h"
 #include "Gestures.h"
+#include "OSCSend.h"
 
 #define HOST "localhost"
 #define PORT 9000
@@ -13,10 +14,10 @@ class ofApp : public ofBaseApp {
 
 public:
 	ofApp();
-	~ofApp();
 	void setup();
 	void update();
 	void draw();
+	void exit();
 
 	void keyPressed(int key);
 	void keyReleased(int key);
@@ -29,12 +30,21 @@ public:
 	void gotMessage(ofMessage msg);
 	
 	//My Classes
-    JointClass jointClass; //Skeleton Data
-	ParticleSystem *systems[2];
+    JointClass jc; //Skeleton Data
 	Gestures gestures; //Gestures are created here
+	ParticleSystem *systems[2];
+
+	OSCSend  oscMsg;
 
 	//External Library Classes
-	ofEasyCam camera;
+	//ofEasyCam camera, world;
 	//ofxOscSender sender;
+
+	/*ofParameter<int> camerax, cameray, cameraz;
+	ofParameter<int> worldx, worldy, worldz;
+
+	ofParameterGroup cameraParams, worldParams;
+	ofxPanel worldGui, cameraGui;
+	*/
 
 };

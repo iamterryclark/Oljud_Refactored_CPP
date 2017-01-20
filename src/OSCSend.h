@@ -34,7 +34,7 @@ public:
 	int lHandDistTo, lHandDistFrom;
 
 	int scene = 0;
-	int timeDelay = 1000;
+	const int timeDelay = 100;
 
 	bool isBeatRepeatOn, drumReset;
 

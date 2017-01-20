@@ -32,9 +32,10 @@ public:
 	//My Classes
     JointClass jc; //Skeleton Data
 	Gestures gestures; //Gestures are created here
+	OSCSend  oscMsg; //Send gestures by osc
 	ParticleSystem *systems[2];
 
-	OSCSend  oscMsg;
+	
 
 	//External Library Classes
 	//ofEasyCam camera, world;

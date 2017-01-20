@@ -1,4 +1,7 @@
 ﻿  Gestures.cpp
+  ofApp.cpp
+c:\users\t\desktop\openframeworks\apps\myapps\oljud_refactored\src\ofApp.h(11): warning C4005: 'PORT': macro redefinition (compiling source file src\ofApp.cpp)
+  c:\users\t\desktop\openframeworks\apps\myapps\oljud_refactored\src\OSCSend.h(8): note: see previous definition of 'PORT' (compiling source file src\ofApp.cpp)
      Creating library bin\Oljud_Refactored.lib and object bin\Oljud_Refactored.exp
   Generating code
   0 of 1206 functions ( 0.0%) were compiled, the rest were copied from previous compilation.

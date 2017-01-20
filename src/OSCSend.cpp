@@ -14,22 +14,24 @@ OSCSend::~OSCSend()
 }
 
 void OSCSend::run() {
-	lHand = jointClass->leftHand;
-	rHand = jointClass->rightHand;
+	lHandMapX = ofMap(jointClass->mappedLeftHand.x, 0, ofGetWidth(), lHandXTo, lHandXFrom);
+	lHandMapY = ofMap(jointClass->mappedLeftHand.y, 0, ofGetWidth(), lHandYTo, lHandYFrom);
+	lHandMapZ = ofMap(jointClass->mappedLeftHand.z, 0, ofGetWidth(), lHandZTo, lHandZFrom);
 
-	lHandMapX = ofMap(lHand.x, -1, 1, lHandXTo, lHandXFrom);
-	lHandMapY = ofMap(lHand.y, -1, 1, lHandYTo, lHandYFrom);
-	lHandMapZ = ofMap(lHand.z, -1, 1, lHandZTo, lHandZFrom);
-
-	rHandMapX = ofMap(rHand.x, -1, 1, rHandXTo, rHandXFrom);
-	rHandMapY = ofMap(rHand.y, -1, 1, rHandYTo, rHandYFrom);
-	rHandMapZ = ofMap(rHand.z, -1, 1, rHandZTo, rHandZFrom);
+	rHandMapX = ofMap(jointClass->mappedRightHand.x, 0, ofGetWidth(), rHandXTo, rHandXFrom);
+	rHandMapY = ofMap(jointClass->mappedRightHand.y, 0, ofGetWidth(), rHandYTo, rHandYFrom);
+	rHandMapZ = ofMap(jointClass->mappedRightHand.z, 0, ofGetWidth(), rHandZTo, rHandZFrom);
 
 	lHandMapDist = ofMap(lHand.distance(rHand), 0, 1000, lHandDistTo, lHandDistFrom);
 
-	cout << "Left Hand: " << ofVec3f(lHandMapX, lHandMapY, lHandMapZ) << endl;
-	cout << "Right Hand: " << ofVec3f(rHandMapX, rHandMapY, rHandMapZ) << endl;
-	cout << "Hand Distance: " << lHandMapDist << endl;
+	//For debug
+	/*if (ofGetFrameNum() % timeDelay == 0) {
+		cout << "------- For OSC Send -------" << endl;
+		cout << "Left Hand: " << ofVec3f(lHandMapX, lHandMapY, lHandMapZ) << endl;
+		cout << "Right Hand: " << ofVec3f(rHandMapX, rHandMapY, rHandMapZ) << endl;
+		cout << "Hand Distance: " << lHandMapDist << endl;
+		cout << " " << endl;
+	}*/
 }
 
 void OSCSend::sceneInstruments() {
@@ -83,8 +85,9 @@ void OSCSend::sceneInstruments() {
 		message.addIntArg(int(lHandMapZ)); //value 14 - 0
 		sceneInstruments.addMessage(message);
 
-		if (ofGetFrameNum() % timeDelay == 0); //Set time delay of bundle being sent
+		if (ofGetFrameNum() % timeDelay == 0) { //Set time delay of bundle being sent
 			sender.sendBundle(sceneInstruments); //Send to osc address
+		}
 	}
 
 	if (scene == 1) {

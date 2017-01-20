@@ -44,6 +44,8 @@ void ofApp::update() {
 	//Update the kinect streams and joint information
 	jc.update();
 	jc.getJointPosition();
+	gestures.run();
+	oscMsg.run();
 
 	//Update all particle system origins
 	for (auto & system : systems) {
@@ -56,10 +58,6 @@ void ofApp::update() {
 	if (jc.rHandState == "Open")
 		systems[1]->addParticles(ofVec2f(jc.mappedRightHand.x, jc.mappedRightHand.y));
 
-
-	gestures.run();
-	oscMsg.run();
-	
 }
 
 //--------------------------------------------------------------
@@ -67,13 +65,11 @@ void ofApp::update() {
 void ofApp::draw() {	
 	for (auto & system : systems) {
 		system->display();
-		
 	}
 
-	systems[0]->particleGui.draw();
-	systems[1]->particleGui.draw();
+	//systems[0]->particleGui.draw();
+	//systems[1]->particleGui.draw();
 }
-
 
 void ofApp::exit() {
 	//When creating something on the heap it must be deleted in order to stop using unused memory
@@ -87,7 +83,9 @@ void ofApp::exit() {
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-
+	if (key == ' ') {
+		oscMsg.scene = 1;
+	}
 }
 
 //--------------------------------------------------------------

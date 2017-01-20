@@ -129,7 +129,10 @@ void JointClass::getJointPosition() {
 
 	//Debug Checker for this mapped Coordinates of left and right hand
 	/*if (ofGetFrameNum() % 100 == 0) {
+		cout << "------ From JointClass --------" << endl;
 		cout << "Left: " << mappedLeftHand << endl;
 		cout << "Right: " << mappedRightHand << endl;
+		cout << " " << endl;
+
 	}*/
 }

@@ -3,6 +3,8 @@
 An Interactive Audio Visual Tool for artists. Linking Kinect to Ableton and mapping movements to music.
 
 ##How to Run
+- Windows Operating system only Visual Studio 2015
+- Put this folder under you openFrameworks myApps Folder
 - Download ofKinectForWindows2 Library by Elliott Woods - https://github.com/elliotwoods/ofxKinectForWindows2
 - Install KinectV2 SDK from Windows - https://www.microsoft.com/en-gb/download/details.aspx?id=44561 (run the examples in this program to test the Kinect works)
 - Run the app.
